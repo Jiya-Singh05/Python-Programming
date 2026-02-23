@@ -1,32 +1,34 @@
 # Create a Todo list Manager where users can add, view, and remove tasks. Use List for storing tasks. 
-tasks = []
-
-while True:
-    print("\n TO DO LIST MANAGER")
-    print("1. ADD TASK")
-    print("2. VIEW TASK")
-    print("3. REMOVE TASK")
-    print("4. EXIT")
-
-    choice = int(input("Enter your choice (1-4): "))
+todo=[]
+def add():
+    task=input("Enter the task: ")
+    todo.append(task)
+    print("Task added")
     
-    if choice == 1:
-        task = input("Enter task to add: ").split()
-        tasks.append(task)
-        print("Task added successfully!")
-    elif choice == 2:
-        if len(tasks) == 0:
-            print("List is empty")
-        else:
-            print("To do list:\n", tasks)
-    elif choice == 3:
-        rem = input("Enter task to remove: ")
-        if rem in tasks:
-            tasks.remove(rem)
-            print("After remove:", tasks)
-        else:
-            print("Item not found")
-    elif choice == 4:
-        break
+def delete():
+  task=input("Enter the task to delete: ")
+  if task in todo:
+        todo.remove(task)
+        print("Task deleted successfully.")
+  else:
+        print("Task not found.") 
+        
+def display():
+    if len(todo)==0:
+        print("No tasks in the to-do list.")
     else:
-        print("Invalid input")
+        print(todo)
+
+choice=1
+print(" 1].Add task\n 2].Delete task\n 3].Display tasks\n 4].Exit")
+while(choice!=4):
+    choice=int(input("Enter choice:\n"))
+    if(choice==1):
+        add()
+    elif(choice==2):
+        delete()
+    elif(choice==3):
+        display()
+    else:
+        break
+               
